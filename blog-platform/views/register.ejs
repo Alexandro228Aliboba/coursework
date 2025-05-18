@@ -1,0 +1,44 @@
+<!-- Страница регистрации -->
+<h1>Регистрация</h1>
+<form action="/register" method="post" class="mt-4">
+	<% if (errors && errors.length) { %>
+	<ul class="alert alert-danger">
+		<% errors.forEach(e => { %>
+		<li style="list-style: none"><%= e.msg %></li>
+		<% }) %>
+	</ul>
+	<% } %>
+	<div class="mb-3">
+		<label>Имя</label
+		><input
+			name="username"
+			class="form-control"
+			value="<%= username||'' %>"
+			required
+		/>
+	</div>
+	<div class="mb-3">
+		<label>Email</label
+		><input
+			name="email"
+			type="email"
+			class="form-control"
+			value="<%= email||'' %>"
+			required
+		/>
+	</div>
+	<div class="mb-3">
+		<label>Пароль</label
+		><input name="password" type="password" class="form-control" required />
+	</div>
+	<div class="mb-3">
+		<label>Подтверждение</label
+		><input
+			name="confirmPassword"
+			type="password"
+			class="form-control"
+			required
+		/>
+	</div>
+	<button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+</form>

@@ -1,0 +1,47 @@
+<!-- Страница профиля: информация пользователя, настройки дизайна и список постов -->
+<h1><%= title %></h1>
+<div class="card mb-4">
+  <div class="card-body">
+    <p><strong>Имя:</strong> <%= user.username %></p>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <p><strong>Всего постов:</strong> <%= posts.length %></p>
+  </div>
+</div>
+<div class="card mb-4">
+  <div class="card-header">Настройки дизайна</div>
+  <div class="card-body">
+    <form action="/profile/settings" method="post">
+      <div class="mb-3">
+        <label for="theme" class="form-label">Тема</label>
+        <select id="theme" name="theme" class="form-select">
+          <option value="light" <%= user.theme==='light'?'selected':'' %>>Светлая</option>
+          <option value="dark"  <%= user.theme==='dark'?'selected':'' %>>Тёмная</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="postBg" class="form-label">Фон постов</label>
+        <input type="color" id="postBg" name="postBg" value="<%= user.postBg %>" class="form-control form-control-color">
+      </div>
+      <div class="mb-3">
+        <label for="postTextColor" class="form-label">Цвет текста в постах</label>
+        <input type="color"
+              id="postTextColor"
+              name="postTextColor"
+              value="<%= user.postTextColor %>"
+              class="form-control form-control-color"
+              title="Выберите цвет текста для постов">
+      </div>
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+  </div>
+</div>
+<h2>Мои посты</h2>
+<div class="row">
+  <% posts.forEach(post => { %>
+    <div class="col-md-6 mb-3">
+      <div class="card post p-3">
+        <h5><a href="/posts/<%= post.id %>"><%= post.title %></a></h5>
+      </div>
+    </div>
+  <% }) %>
+</div>

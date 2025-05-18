@@ -1,0 +1,62 @@
+<!-- Создание нового поста -->
+<div class="container mt-4">
+	<h1><%= title %></h1>
+
+	<form
+		action="/posts"
+		method="post"
+		enctype="multipart/form-data"
+		class="mt-4"
+	>
+		<div class="mb-3">
+			<label for="title" class="form-label">Заголовок</label>
+			<input id="title" name="title" class="form-control" required />
+		</div>
+
+		<div class="mb-3">
+			<label for="editor" class="form-label">Содержание</label>
+			<div id="editor" style="height: 300px; background: #ffffff"></div>
+			<!-- Скрытое поле, куда скрипт запишет HTML -->
+			<input type="hidden" name="content" id="content" />
+		</div>
+
+		<div class="mb-3">
+			<label for="image" class="form-label">Фото к посту</label>
+			<input
+				id="image"
+				type="file"
+				name="image"
+				accept="image/*"
+				class="form-control"
+			/>
+		</div>
+
+		<div class="mb-3">
+			<label for="files" class="form-label">Прикрепить файлы</label>
+			<input
+				id="files"
+				type="file"
+				name="files"
+				multiple
+				class="form-control"
+			/>
+		</div>
+
+		<button type="submit" class="btn btn-success">Создать</button>
+	</form>
+</div>
+
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+	// Инициализируем редактор
+	const quill = new Quill('#editor', {
+		theme: 'snow',
+	})
+
+	// При сабмите формы копируем HTML в скрытое поле
+	document.querySelector('form').addEventListener('submit', function () {
+		document.getElementById('content').value = quill.root.innerHTML
+	})
+</script>

@@ -1,0 +1,32 @@
+{
+	"name": "blog-platform",
+	"version": "1.0.0",
+	"main": "src/app.js",
+	"scripts": {
+		"build:scss": "sass --load-path=src/scss --load-path=node_modules src/scss/style.scss:public/css/style.css --no-source-map",
+		"watch:scss": "sass --load-path=src/scss --load-path=node_modules --watch src/scss/style.scss:public/css/style.css --no-source-map",
+		"dev": "nodemon src/app.js"
+	},
+	"dependencies": {
+		"bcrypt": "*",
+		"bootstrap": "*",
+		"connect-flash": "*",
+		"dotenv": "*",
+		"ejs": "*",
+		"express": "*",
+		"express-ejs-layouts": "^2.5.1",
+		"express-session": "*",
+		"helmet": "*",
+		"multer": "*",
+		"mysql2": "*",
+		"passport": "*",
+		"passport-local": "*",
+		"quill": "*",
+		"selfsigned": "*",
+		"sequelize": "*"
+	},
+	"devDependencies": {
+		"nodemon": "*",
+		"sass": "*"
+	}
+}

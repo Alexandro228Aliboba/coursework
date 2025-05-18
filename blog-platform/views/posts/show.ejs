@@ -1,0 +1,33 @@
+<!-- Просмотр поста -->
+<h1><%= post.title %></h1>
+
+<!-- Выводим главное фото -->
+<% const main = post.Files.find(f => f.isMain); %> <% if (main) { %>
+<div class="mb-4 d-flex justify-content-center">
+	<!-- Ограничиваем ширину блока -->
+	<div class="card" style="width: 250px">
+		<!-- Добавляем стили thumbnail -->
+		<img
+			src="<%= main.path %>"
+			class="card-img-top img-fluid img-thumbnail"
+			alt="Фото к посту"
+		/>
+	</div>
+</div>
+<% } %>
+
+<!-- Содержимое поста -->
+<div class="card post p-3 mb-3"><%- post.content %></div>
+
+<!-- Список остальных файлов -->
+<% const others = post.Files.filter(f => !f.isMain); %> <% if (others.length) {
+%>
+<h5>Прикреплённые файлы:</h5>
+<ul>
+	<% others.forEach(f => { %>
+	<li>
+		<a href="<%= f.path %>" target="_blank"><%= f.filename %></a>
+	</li>
+	<% }); %>
+</ul>
+<% } %>

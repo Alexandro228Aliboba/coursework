@@ -1,0 +1,13 @@
+/* SCSS: импорт тем и Bootstrap, основные стили приложения */
+@use 'themes';
+@use 'bootstrap/scss/bootstrap';
+
+body {
+	background-color: var(--bs-body-bg);
+	color: var(--bs-body-color);
+}
+
+.card.post {
+	background-color: var(--post-bg);
+	color: var(--post-text-color); // ← здесь
+}

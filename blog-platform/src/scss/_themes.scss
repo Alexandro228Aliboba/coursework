@@ -1,0 +1,12 @@
+:root {
+	--bs-body-bg: #ffffff;
+	--bs-body-color: #212529;
+	--post-bg: #ffffff;
+	--post-text-color: #000000; // ← новый дефолт
+}
+.dark {
+	--bs-body-bg: #212529;
+	--bs-body-color: #f8f9fa;
+	--post-bg: #333333;
+	--post-text-color: #f8f9fa; // можно другой дефолт для dark
+}

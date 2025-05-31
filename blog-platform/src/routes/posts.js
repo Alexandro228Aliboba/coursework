@@ -23,6 +23,7 @@ const uploader = upload.fields([
 router.get('/', ensureAuthenticated, posts.index)
 router.get('/new', ensureAuthenticated, posts.showNew)
 router.post('/', ensureAuthenticated, uploader, posts.create)
+router.get('/all', ensureAuthenticated, posts.showAll);
 router.get('/:id', ensureAuthenticated, posts.show)
 router.get('/:id/edit', ensureAuthenticated, posts.showEdit)
 router.post('/:id/edit', ensureAuthenticated, uploader, posts.update)

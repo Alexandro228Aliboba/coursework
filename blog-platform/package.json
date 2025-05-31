@@ -5,7 +5,9 @@
 	"scripts": {
 		"build:scss": "sass --load-path=src/scss --load-path=node_modules src/scss/style.scss:public/css/style.css --no-source-map",
 		"watch:scss": "sass --load-path=src/scss --load-path=node_modules --watch src/scss/style.scss:public/css/style.css --no-source-map",
-		"dev": "nodemon src/app.js"
+		"dev": "nodemon src/app.js",
+		"db:seed": "sequelize db:seed:all",
+		"db:seed:undo": "sequelize db:seed:undo:all"
 	},
 	"dependencies": {
 		"bcrypt": "*",
@@ -26,7 +28,9 @@
 		"sequelize": "*"
 	},
 	"devDependencies": {
+		"@faker-js/faker": "^9.8.0",
 		"nodemon": "*",
-		"sass": "*"
+		"sass": "*",
+		"sequelize-cli": "^6.6.3"
 	}
 }

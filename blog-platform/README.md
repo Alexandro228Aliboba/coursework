@@ -112,6 +112,10 @@ npm install
 Сборка SCSS:
 npm run build:scss
 
+Генерация постов:
+npm run db:seed
+npx sequelize db:seed:all
+
 Запуск сервера:
 npm run dev
 

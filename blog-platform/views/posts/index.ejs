@@ -12,27 +12,29 @@
 		<a href="/posts/<%= p.id %>"><%= p.title %></a>
 
 		<!-- Блок управления: редактировать + удалить -->
-		<div class="d-flex">
-			<!-- Кнопка редактирования -->
-			<a
-				href="/posts/<%= p.id %>/edit"
-				class="btn btn-outline-primary btn-sm me-2"
-			>
-				Редактировать
-			</a>
+    <% if (showControls) { %>
+			<div class="d-flex">
+				<!-- Кнопка редактирования -->
+				<a
+					href="/posts/<%= p.id %>/edit"
+					class="btn btn-outline-primary btn-sm me-2"
+				>
+					Редактировать
+				</a>
 
-			<!-- Форма удаления -->
-			<form
-				action="/posts/<%= p.id %>/delete"
-				method="post"
-				onsubmit="return confirm('Удалить пост «<%= p.title %>»?');"
-				style="display: inline"
-			>
-				<button type="submit" class="btn btn-outline-danger btn-sm">
-					Удалить
-				</button>
-			</form>
-		</div>
+				<!-- Форма удаления -->
+				<form
+					action="/posts/<%= p.id %>/delete"
+					method="post"
+					onsubmit="return confirm('Удалить пост «<%= p.title %>»?');"
+					style="display: inline"
+				>
+					<button type="submit" class="btn btn-outline-danger btn-sm">
+						Удалить
+					</button>
+				</form>
+			</div>
+		<% } %>
 	</li>
 	<% }) %>
 </ul>

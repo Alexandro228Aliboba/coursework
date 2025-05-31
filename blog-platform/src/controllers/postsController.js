@@ -11,19 +11,42 @@
 const { Post, File } = require('../models')
 
 module.exports = {
-	index: async (req, res) => {
-		try {
-			const posts = await Post.findAll({
-				where: { user_id: req.user.id },
-				include: [File], // Подтягиваем файлы
-				order: [['createdAt', 'DESC']], // Сортируем по дате
-			})
-			return res.render('posts/index', { posts, title: 'Мои посты' })
-		} catch (err) {
-			console.error('postsController.index:', err)
-			return res.sendStatus(500)
-		}
-	},
+  // Список собственных постов с функциями редактирования/удаления
+  index: async (req, res) => {
+    try {
+      const posts = await Post.findAll({
+        where: { user_id: req.user.id },
+        include: [ File ],
+        order: [['createdAt', 'DESC']],
+      })
+      return res.render('posts/index', {
+        posts,
+        title: 'Мои посты',
+        showControls: true    // показываем кнопки
+      })
+    } catch (err) {
+      console.error('postsController.index:', err)
+      return res.sendStatus(500)
+    }
+  },
+
+  // Список всех постов без функций редактирования/удаления
+  showAll: async (req, res) => {
+    try {
+      const posts = await Post.findAll({
+        include: [ File ],
+        order:   [['createdAt', 'DESC']],
+      })
+      return res.render('posts/index', {
+        posts,
+        title: 'Все посты',
+        showControls: false   // скрываем кнопки
+      })
+    } catch (err) {
+      console.error('postsController.showAll:', err)
+      return res.sendStatus(500)
+    }
+  },
 
 	showNew: (req, res) => {
 		res.render('posts/new', { title: 'Новый пост' })
